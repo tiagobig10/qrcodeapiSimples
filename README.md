@@ -4,7 +4,7 @@
 
 Gera um QR Code no formato SVG a partir do conteúdo e tamanho fornecidos no corpo da requisição.
 
-## 🛠️ Detalhes da Implementação
+## Detalhes da Implementação
 
 Este projeto foi desenvolvido utilizando **Java** com **Spring Boot 3**.
 
@@ -14,7 +14,7 @@ Este projeto foi desenvolvido utilizando **Java** com **Spring Boot 3**.
 
 **Tipo de Conteúdo:** `application/json`
 
-### 📥 Request Body
+### Request Body
 
 O corpo da requisição deve ser um objeto JSON contendo o texto a ser codificado e o tamanho desejado para o lado do QR Code em pixels.
 
