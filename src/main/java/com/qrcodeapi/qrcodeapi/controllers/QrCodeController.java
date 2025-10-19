@@ -18,7 +18,7 @@ public class QrCodeController {
     @Autowired
     private QrcodeService qrcodeService;
 
-    @PostMapping("/qr-code")
+    @PostMapping("/generate-qrcode")
     public ResponseEntity<?> generate(@RequestBody(required = false) QrcodeRequest request) {
         return new ResponseEntity<>(qrcodeService.generate(request.getContent(), request.getSize()), HttpStatus.CREATED);
     }
