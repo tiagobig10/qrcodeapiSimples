@@ -4,6 +4,10 @@
 
 Gera um QR Code no formato SVG a partir do conteúdo e tamanho fornecidos no corpo da requisição.
 
+## 🛠️ Detalhes da Implementação
+
+Este projeto foi desenvolvido utilizando **Java** com **Spring Boot 3**.
+
 **Método:** `POST`
 
 **URL:** `/generate-qrcode`
