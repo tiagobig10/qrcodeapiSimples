@@ -1,12 +1,16 @@
+## Autor
+Pedro Tiago
+
 ## Endpoint
 
 ### `POST /generate-qrcode`
 
 Gera um QR Code no formato SVG a partir do conteúdo e tamanho fornecidos no corpo da requisição.
 
-## Detalhes da Implementação
-
+## Tecnologias
 Este projeto foi desenvolvido utilizando **Java** com **Spring Boot 3**.
+
+## Detalhes da Implementação
 
 **Método:** `POST`
 
@@ -27,6 +31,15 @@ O corpo da requisição deve ser um objeto JSON contendo o texto a ser codificad
 
 ```json
 {
-  "content": "<svg>exemplo</svg",
+  "content": "www.site.com.br",
+  "size": 300
+}
+```
+
+**Exemplo de Response:**
+
+```json
+{
+  "content": "<svg></svg>r",
   "size": 300
 }
