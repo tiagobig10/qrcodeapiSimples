@@ -27,6 +27,6 @@ O corpo da requisição deve ser um objeto JSON contendo o texto a ser codificad
 
 ```json
 {
-  "content": "<svg>exemplo</svg",
+  "content": "www.site.com.br",
   "size": 300
 }
