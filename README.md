@@ -30,3 +30,12 @@ O corpo da requisição deve ser um objeto JSON contendo o texto a ser codificad
   "content": "www.site.com.br",
   "size": 300
 }
+```
+
+**Exemplo de Response:**
+
+```json
+{
+  "content": "<svg></svg>r",
+  "size": 300
+}
