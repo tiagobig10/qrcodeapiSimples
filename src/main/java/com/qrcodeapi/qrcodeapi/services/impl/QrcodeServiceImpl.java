@@ -10,6 +10,10 @@ public class QrcodeServiceImpl implements QrcodeService {
     @Override
     public QrcodeResponse generate(String content, int size) {
 
+        if (size < 1) {
+            size = 1;
+        }
+
         QrCode qrCode = new QrCode();
         String svg = qrCode.generateSvg(content, size, "");
         QrcodeResponse response = new QrcodeResponse();
