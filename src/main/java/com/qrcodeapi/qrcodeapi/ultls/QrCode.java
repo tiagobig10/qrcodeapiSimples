@@ -29,6 +29,8 @@ public class QrCode {
 
     private final Map<String, int[]> ecl = new HashMap<>();
 
+
+    // generate Svg build String
     public String generateSvg(String value, int dimension, String logoLink) {
 
         StringBuilder stringBuilder = new StringBuilder();
