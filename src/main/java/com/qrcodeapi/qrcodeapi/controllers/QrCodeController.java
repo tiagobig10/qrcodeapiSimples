@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 public class QrCodeController {
-
     @Autowired
     private QrcodeService qrcodeService;
 
@@ -23,7 +22,5 @@ public class QrCodeController {
     public ResponseEntity<?> generate(@RequestBody(required = false) QrcodeRequest request) {
         return new ResponseEntity<>(qrcodeService.generate(request.getContent(), request.getSize()), HttpStatus.CREATED);
     }
-
-
 
 }
