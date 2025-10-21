@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // example de teste
 class QrcodeServiceTest {
-    // example de teste
 
     @Test
     @DisplayName("generateIsContentPresent")
