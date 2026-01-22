@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QrcodeResponse {
+
     public String content;
+    public int[][] matrix;
     public Integer size;
 }

@@ -30,6 +30,7 @@ public class QrcodeServiceImpl implements QrcodeService {
             //matrixToSvg.setImageSrc();
             QrcodeResponse response = new QrcodeResponse();
             response.setSize(size);
+            response.setMatrix(qrCode.getMatrix());
             response.setContent(matrixToSvg.getSvg(size));
             return response;
         } catch (Exception e) {
@@ -46,6 +47,5 @@ public class QrcodeServiceImpl implements QrcodeService {
         }
 
     }
-
 
 }
