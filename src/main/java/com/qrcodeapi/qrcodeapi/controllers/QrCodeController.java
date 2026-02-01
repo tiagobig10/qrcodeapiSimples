@@ -28,18 +28,4 @@ public class QrCodeController {
     }
 
 
-    @GetMapping("/test")
-    @CrossOrigin("*")
-    public ResponseEntity<?> test() {
-
-        QrCode qrCode = new QrCode("https://app.esotar.com.br/dashboard");
-
-
-        String svg = new MatrixToSvg(qrCode.getMatrix()).svg(512);
-
-        return new ResponseEntity<>(svg, HttpStatus.OK);
-    }
-
-
-
 }

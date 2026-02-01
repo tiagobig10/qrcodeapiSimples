@@ -1,0 +1,46 @@
+name: Deploy App Esotar
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build project
+        run: mvn clean install -DskipTests
+
+      - name: Login Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push docker image
+        run: |
+          docker build -t tiagobig10/qrcode:latest .
+          docker push tiagobig10/qrcode:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull tiagobig10/qrcode:latest
+
+      - name: Stop and Remove old container
+        run: |
+          docker stop qrcode || true
+          docker rm qrcodea || true
+
+      - name: Run docker container
+        run: docker run -d -p 8082:8082 --name qrcode tiagobig10/qrcode:latest
