@@ -1,7 +1,7 @@
 name: Deploy App Esotar
 on:
   push:
-    branches: [master]
+    branches: [ master ]
 
 jobs:
   build:
@@ -29,18 +29,3 @@ jobs:
         run: |
           docker build -t tiagobig10/qrcode:latest .
           docker push tiagobig10/qrcode:latest
-
-  deploy:
-    needs: build
-    runs-on: self-hosted
-    steps:
-      - name: Pull image from docker hub
-        run: docker pull tiagobig10/qrcode:latest
-
-      - name: Stop and Remove old container
-        run: |
-          docker stop qrcode || true
-          docker rm qrcodea || true
-
-      - name: Run docker container
-        run: docker run -d -p 8082:8082 --name qrcode tiagobig10/qrcode:latest
