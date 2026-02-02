@@ -15,6 +15,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache:  'marven'
 
       - name: Build project
         run: mvn clean install -DskipTests
