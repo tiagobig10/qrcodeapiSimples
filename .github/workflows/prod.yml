@@ -1,7 +1,7 @@
 name: Deploy App Esotar
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -11,14 +11,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache:  'marven'
+          cache: 'maven'
 
       - name: Build project
-        run: mvn clean install -DskipTests
+        run: mvn clean package -DskipTests
 
       - name: Login Docker Hub
         uses: docker/login-action@v3
@@ -27,6 +27,21 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: tiagobig10/qrcode:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy with Docker Compose
         run: |
-          docker build -t tiagobig10/qrcode:latest .
-          docker push tiagobig10/qrcode:latest
+          docker compose pull
+          docker compose up -d
+          docker image prune -f
