@@ -20,7 +20,6 @@ public class QrCodeController {
     @Autowired
     private QrcodeService qrcodeService;
 
-    // Endpoint
     @PostMapping("/generate-qrcode")
     @CrossOrigin("*")
     public ResponseEntity<?> generate(@Valid @RequestBody(required = false) QrcodeRequest request) {

@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  api:
+    image: tiagobig10/qrcode:latest
+    container_name: qrcode
+    restart: always
+    ports:
+      - "8083:8083"
+    networks:
+      - bridge-net
+
+networks:
+  bridge-net:
+    external: true
